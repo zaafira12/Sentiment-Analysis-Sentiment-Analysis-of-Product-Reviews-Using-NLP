@@ -37,7 +37,7 @@ The training script (see category (1).py) performs the following:
 
 category (1)
 
-1. Load Dataset
+- Load Dataset
 
 Reads Excel data containing:
 
@@ -49,11 +49,11 @@ FeedbackText
 
 Cleans data and converts labels into numerical IDs.
 
-2️.Tokenization
+- Tokenization
 
 Uses distilbert-base-uncased tokenizer with max length 512.
 
-3️.Train Category Classifier
+- Train Category Classifier
 
 Trains DistilBERT using Hugging Face Trainer with:
 
@@ -65,11 +65,11 @@ Weight Decay: 0.01
 
 Auto-saving best model
 
-4️.Train SubCategory Classifier
+- Train SubCategory Classifier
 
 Identical process, but with weighted accuracy, precision, recall, and F1.
 
-5️.Build Combined Analyzer
+- Build Combined Analyzer
 
 Loads:
 
