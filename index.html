@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Feedback Analyzer</title>
+    <style>
+        body { 
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; 
+            background-color: #f4f7f6; 
+            color: #333; 
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            min-height: 100vh; 
+            margin: 0; 
+            padding: 20px; 
+            box-sizing: border-box; 
+        }
+        .container { 
+            background: white; 
+            padding: 40px; 
+            border-radius: 12px; 
+            /* The 'S' was removed from '30px' in the line below */
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); 
+            width: 100%; 
+            max-width: 600px; 
+        }
+        h1 { 
+            color: #2c3e50; 
+            text-align: center; 
+            margin-bottom: 20px; 
+        }
+        textarea { 
+            width: 100%; 
+            padding: 15px; 
+            border-radius: 8px; 
+            border: 1px solid #ccc; 
+            font-size: 16px; 
+            margin-bottom: 20px; 
+            resize: vertical; 
+            box-sizing: border-box; 
+        }
+        button { 
+            width: 100%; 
+            padding: 15px; 
+            border: none; 
+            background-color: #3498db; 
+            color: white; 
+            font-size: 18px; 
+            font-weight: bold; 
+            border-radius: 8px; 
+            cursor: pointer; 
+            transition: background-color 0.3s; 
+        }
+        button:hover { 
+            background-color: #2980b9; 
+        }
+        .result { 
+            margin-top: 30px; 
+            background: #ecf0f1; 
+            padding: 20px; 
+            border-radius: 8px; 
+            border-left: 5px solid #3498db; 
+        }
+        .result h2 { 
+            margin-top: 0; 
+            color: #2c3e50; 
+        }
+        .result p { 
+            font-size: 16px; 
+            line-height: 1.6; 
+        }
+        .result strong { 
+            color: #2980b9; 
+        }
+        .error { 
+            border-left-color: #e74c3c; 
+        }
+        .error strong { 
+            color: #c0392b; 
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Student Feedback Analyzer</h1>
+        <form method="post">
+            <textarea name="feedback" rows="5" placeholder="Enter student feedback here... e.g., 'The professor's teaching pace is too fast and the classroom benches are uncomfortable.'"></textarea>
+            <button type="submit">Analyze Feedback</button>
+        </form>
+
+        {% if result %}
+            <div class="result {% if result.error %}error{% endif %}">
+                <h2>Analysis Result</h2>
+                {% if result.error %}
+                    <p><strong>Error:</strong> {{ result.error }}</p>
+                {% else %}
+                    <p><strong>Sentiment:</strong> {{ result.sentiment }} (Confidence: {{ result.confidence_score }})</p>
+                    <p><strong>Category:</strong> {{ result.category }}</p>
+                    <p><strong>SubCategory:</strong> {{ result.subcategory }}</p>
+                {% endif %}
+            </div>
+        {% endif %}
+    </div>
+</body>
+</html>
