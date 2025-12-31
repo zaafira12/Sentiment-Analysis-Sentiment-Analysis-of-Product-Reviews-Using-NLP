@@ -103,3 +103,5 @@ Provides a single .analyze(text) output like:
 - ngrok
 
 - Pandas / Scikit-learn
+
+<img width="1458" height="218" alt="image" src="https://github.com/user-attachments/assets/46ff83a1-37d1-4912-ba3e-86655e2a43a1" />
